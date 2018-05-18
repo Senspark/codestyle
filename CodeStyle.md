@@ -11,7 +11,7 @@
 
 class MainScene {
 public:
-	MenuButton* button;
+    MenuButton* button;
 };
 ```
 
@@ -22,7 +22,7 @@ class MenuButton;
 
 class MainScene {
 public:
-	MenuButton* button;
+    MenuButton* button;
 };
 
 // MenuScene.cpp
@@ -32,7 +32,7 @@ public:
 // ...
 ```
 
-### Names and order of includes
+### Order of includes
 
 - Ví dụ trong file: `MenuScene.cpp` thứ tự `include`:
 
@@ -81,7 +81,7 @@ std::chrono::seconds MyClass::calculate() {
 // Bad
 int myVariable;
 int calculate() {
-	return 123;
+    return 123;
 }
 ```
 
@@ -91,14 +91,14 @@ int calculate() {
 namespace {
 int myVariable;
 int calculate() {
-	return 123;
+    return 123;
 }
 } // namespace
 
 // dùng static.
 static int myVariable;
 static int calculate() {
-	return 123;
+    return 123;
 }
 ```
 
@@ -111,10 +111,10 @@ static int calculate() {
 ```
 class A {
 public:
-	A(); // OK
-	A(int i); // Bad
-	explicit A(int i); // OK
-	explicit A(int i, float j); // OK
+    A(); // OK
+    A(int i); // Bad
+    explicit A(int i); // OK
+    explicit A(int i, float j); // OK
 };
 ```
 
@@ -125,62 +125,62 @@ public:
 ```
 // Bad
 void process() {
-	if (isBar()) {
-		if (isFoo()) {
-			if (isCloud()) {
-				if (isSky()) {
-					// ...
-				}
-			}
-		}
-	}
+    if (isBar()) {
+        if (isFoo()) {
+            if (isCloud()) {
+                if (isSky()) {
+                    // ...
+                }
+            }
+        }
+    }
 }
 
 // OK
 void process() {
-	if (!isBar()) {
-		return;
-	}
-	if (!isFoor()) {
-		return;
-	}
-	if (!isCloud()) {
-		return;
-	}
-	if (!isSky()) {
-		return;
-	}
-	// ...
+    if (!isBar()) {
+        return;
+    }
+    if (!isFoor()) {
+        return;
+    }
+    if (!isCloud()) {
+        return;
+    }
+    if (!isSky()) {
+        return;
+    }
+    // ...
 }
 
 // Bad.
 void anotherProcess() {
-	for (int i = 0; i < getSize(); ++i) {
-		if (isValid(i)) {
-			for (int j = 0; j < getSize(); ++j) {
-				if (isValid(j)) {
-					doJob(i, j);
-					// ...
-				}
-			}
-		}
-	}
+    for (int i = 0; i < getSize(); ++i) {
+        if (isValid(i)) {
+            for (int j = 0; j < getSize(); ++j) {
+                if (isValid(j)) {
+                    doJob(i, j);
+                    // ...
+                }
+            }
+        }
+    }
 }
 
 // OK.
 void anotherProcess() {
-	for (int i = 0; i < getSize(); ++i) {
-		if (!isValid(i)) {
-			continue;
-		}
-		for (int j = 0; j < getSize(); ++j) {
-			if (!isValid(j)) {
-				continue;
-			}
-			doJob(i, j);
-			// ...
-		}
-	}
+    for (int i = 0; i < getSize(); ++i) {
+        if (!isValid(i)) {
+            continue;
+        }
+        for (int j = 0; j < getSize(); ++j) {
+            if (!isValid(j)) {
+                continue;
+            }
+            doJob(i, j);
+            // ...
+        }
+    }
 }
 
 ```
@@ -204,9 +204,9 @@ struct A {};
 struct B : A {};
 
 void calculate(A* a) {
-	auto b1 = (B*)a; // Bad
-	auto b2 = static_cast<B*>(a); // Bad
-	auto b2 = dynamic_cast<B*>(a); // OK	
+    auto b1 = (B*)a; // Bad
+    auto b2 = static_cast<B*>(a); // Bad
+    auto b2 = dynamic_cast<B*>(a); // OK    
 }
 ```
 
@@ -217,9 +217,9 @@ void calculate(A* a) {
 ```
 // OK
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-	do_something();
+    do_something();
 #else if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-	do_something_else();
+    do_something_else();
 #endif
 
 #define MY_SPEED 320 // Bad
@@ -242,16 +242,16 @@ auto sprite = cocos2d::Sprite::create(); // Ok
 ```
 // Bad
 enum Indent {
-	IndentLeft,
-	IndentRight,
-	IndentCenter
+    IndentLeft,
+    IndentRight,
+    IndentCenter
 };
 
 // OK
 enum class Indent {
-	Left,
-	Right,
-	Center,
+    Left,
+    Right,
+    Center,
 };
 ```
 
@@ -263,17 +263,17 @@ enum class Indent {
 
 ```
 struct A {
-	~A() {}
+    ~A() {}
 };
 
 struct B {
-	~B() {}
-	// ...
+    ~B() {}
+    // ...
 };
 
 int main() {
-	A* x = new B();
-	delete x; // destructor được khai báo trong B sẽ không được gọi, có thể dẫn đến leak bộ nhớ.
+    A* x = new B();
+    delete x; // destructor được khai báo trong B sẽ không được gọi, có thể dẫn đến leak bộ nhớ.
 }
 ```
 
@@ -283,7 +283,7 @@ int main() {
 
 ```
 struct A {
-	virtual ~A() {}
+    virtual ~A() {}
 };
 ```
 
@@ -294,7 +294,7 @@ struct A {
 ```
 /// Utils.hpp
 int sqr(int x) {
-	return x * x;
+    return x * x;
 }
 ```
 
@@ -303,7 +303,7 @@ int sqr(int x) {
 #include "Utils.hpp"
 
 int func1(int x) {
-	return sqr(x);
+    return sqr(x);
 }
 ```
 
@@ -312,7 +312,7 @@ int func1(int x) {
 #include "Utils.hpp"
 
 int func2(int x) {
-	return sqr(x);
+    return sqr(x);
 }
 ```
 
@@ -329,7 +329,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 /// Không khuyến khích
 /// Utils.hpp
 inline int sqr(int x) {
-	return x * x;
+    return x * x;
 }
 ```
 
@@ -352,7 +352,7 @@ public:
 NS_GAME_BEGIN
 class GameScene {
 public:
-	// ...
+    // ...
 };
 NS_GAME_END
 
