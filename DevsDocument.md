@@ -1,7 +1,8 @@
 # Code Requirement #
 
-## Format theo chuẩn của team
-## Thiết kế chia nhỏ class, đảm bảo class không làm quá nhiều chức năng
+## Format theo chuẩn của team.
+## Thiết kế chia nhỏ class, đảm bảo class không làm quá nhiều chức năng.
+## Khi gắn các chức năng mới, phải làm tracking và remote config cho chức năng đó.
 
 
 
